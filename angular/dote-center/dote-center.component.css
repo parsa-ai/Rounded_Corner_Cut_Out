@@ -1,0 +1,7 @@
+.dote{
+    width: var(--w-dote);
+    height: var(--h-dote);
+    border-radius: var(--br-dote);
+    background: var(--bg-dote);
+    background-position: center;
+}

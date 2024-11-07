@@ -1,0 +1,40 @@
+.box {
+    width: var(--w, 5rem);
+    height: var(--h, 5rem);
+    background-color: var(--bg-color, #ccc); /* مقدار پیش‌فرض رنگ */
+    border-radius: 0 0 var(--main-radius, 1rem) var(--main-radius, 1rem);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box::before,
+.box::after {
+    content: "";
+    background: transparent;
+    border-top-left-radius: var(--var-size, 1.5rem);
+    box-shadow: 0 calc(var(--var-size, 1.5rem) * -1) 0 0 var(--bg-color, #ccc);
+    width: var(--var-size, 1.5rem);
+    height: calc(var(--var-size, 1.5rem) * 2);
+    position: absolute;
+    top: calc(var(--var-size, 1.5rem) * -0.52);
+    z-index: -1;
+}
+
+.box::after {
+    right: calc(var(--var-size, 1.5rem) * -1.52);
+    transform: rotate(270deg) rotateY(180deg);
+}
+
+.box::before {
+    left: calc(var(--var-size, 1.5rem) * -1.52);
+    transform: rotate(90deg);
+}
+
+@container style(--pos) {
+    .box {
+        transform: rotateY(calc(var(--pos-rot-y, 0) * 180deg))
+                   rotateX(calc(var(--pos-rot-x, 0) * 180deg));
+    }
+}
